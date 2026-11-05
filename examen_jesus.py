@@ -6,6 +6,7 @@ import inspect
 import os
 import random
 import re
+import secrets
 import tempfile
 import threading
 import time
@@ -5017,6 +5018,9 @@ def main(page: ft.Page):
 if __name__ == "__main__":
     # Render inyecta el puerto en la variable PORT y exige escuchar en 0.0.0.0
     _port = int(os.environ.get("PORT", "8550"))
+    # Flet exige una clave secreta para firmar las URLs de subida de archivos.
+    # Si no defines FLET_SECRET_KEY en Render, se genera una aleatoria al arrancar.
+    os.environ.setdefault("FLET_SECRET_KEY", secrets.token_hex(32))
     _kwargs = dict(
         view=ft.AppView.WEB_BROWSER,
         host="0.0.0.0",
