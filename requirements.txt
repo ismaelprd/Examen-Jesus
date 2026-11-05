@@ -1,0 +1,6 @@
+flet[web]>=0.80.0
+flet-web>=0.80.0
+google-genai
+pypdf
+pydantic
+requests
